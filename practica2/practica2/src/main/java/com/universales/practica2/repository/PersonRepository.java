@@ -8,4 +8,5 @@ import com.universales.practica2.dto.Person;
 
 public interface PersonRepository extends JpaRepository<Person, Serializable>{
 
+public Person findByUsernameAndPassword(String username, String password);
 }

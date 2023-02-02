@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="PERSON")
 public class Person implements Serializable {
-
 	/**
 	 * 
 	 */
@@ -14,24 +13,24 @@ public class Person implements Serializable {
 
 	//Campos de la base de datos
 	@Id
-	@Basic(optional = false)
 	@Column(name="USERNAME")
-	private String userName;
+	private String username;
 	
 	@Column(name="PASSWORD")
 	private String password;
 
 	//Getters and Setters
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
 
 	public String getPassword() {
 		return password;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public void setPassword(String password) {
