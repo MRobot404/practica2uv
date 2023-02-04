@@ -44,11 +44,11 @@ private JwtGeneratorInterface jwtGenerator;
 	  public ResponseEntity<?> loginUser(@RequestBody Person person) {
 	    try {
 	      if(person.getUsername() == null || person.getPassword() == null) {
-	      throw new UserPrincipalNotFoundException("UserName or Password is Empty");
+	      throw new UserPrincipalNotFoundException("Usuario o contraseña vacio");
 	    }
 	    Person userData = personService.getPersonByUsernameAndPassword(person.getUsername(), person.getPassword());
 	    if(userData == null){
-	       throw new UserPrincipalNotFoundException("UserName or Password is Invalid");
+	       throw new UserPrincipalNotFoundException("Usuario o contraseña incorrectos");
 	    }
 	       return new ResponseEntity<>(jwtGenerator.generateToken(person), HttpStatus.OK);
 	    } catch (UserPrincipalNotFoundException e) {
@@ -56,7 +56,13 @@ private JwtGeneratorInterface jwtGenerator;
 	    }
 	  }
 	 
-
+	 
+	 
+	 @GetMapping("/buscar")
+	 public ResponseEntity<List<Person>> getAllPersons() {
+	     List<Person> persons = personService.getAllPersons();
+	     return new ResponseEntity<>(persons, HttpStatus.OK);
+	 }
 	
 
 }

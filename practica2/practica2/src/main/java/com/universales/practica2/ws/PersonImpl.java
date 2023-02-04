@@ -34,5 +34,11 @@ public class PersonImpl  implements PersonService {
 	    }
 	    return user;
 	  }
+
+	@Override
+	public List<Person> getAllPersons() {
+		// TODO Auto-generated method stub
+		return personRepository.findAll();
+	}
 	
 }
